@@ -1,7 +1,8 @@
 version: '3'
 services:
-  web:
+  react-app:
     build: .
     ports:
       - "80:80"
+    container_name: react-prod
 

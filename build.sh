@@ -1,3 +1,3 @@
 #!/bin/bash
-docker build -t devops-app:latest .
+docker build -t pallavidocker2024/react-app:latest .
 
