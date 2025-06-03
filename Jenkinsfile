@@ -1,21 +1,22 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_IMAGE = "pallavidocker2024/pallavidocker2024"}
-
     stages {
-        stage('Clone Repository') {
+        stage('Build & Deploy') {
             steps {
-                git 'https://github.com/Pallavicode/fresh.git'  }
-        } 
-
-  stage('Build') {
-            steps {
+                echo 'Starting build and deploy scripts...'
                 sh 'chmod +x build.sh && ./build.sh'
                 sh 'chmod +x deploy.sh && ./deploy.sh'
             }
         }
     }
-}
 
+    post {
+        success {
+            echo '✅ Build and deployment completed successfully.'
+        }
+        failure {
+            echo '❌ Build or deployment failed.'
+        }
+    }
+}
